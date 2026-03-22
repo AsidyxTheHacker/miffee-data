@@ -42,7 +42,7 @@ body {
     align-items: center;
     justify-content: start;
     height: auto;
-    width: 450px;
+    width: 500px;
 }
 
 .result-title {
@@ -51,7 +51,7 @@ body {
     font-size: 2em;
     width: 100%;
     background-color: black;
-    border: solid white 2px;
+    text-decoration: underline;
     font-family: AntiqueOlive;
 }
 
@@ -72,7 +72,6 @@ body {
     color: white;
     width: 100%;
     height: auto;
-    border: solid white 2px;
     cursor: default;
     opacity: 0;
     transform: translateY(10px);
@@ -98,13 +97,13 @@ body {
 
 .player-text-win {
     margin-right: .3em;
-    font-size: calc(.6vw + 10px);
+    font-size: calc(.5vw + 10px);
     text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
 }
 
 .player-text-lose {
     margin-left: .3em;
-    font-size: calc(.6vw + 10px);
+    font-size: calc(.5vw + 10px);
     text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
 }
 
@@ -113,6 +112,7 @@ body {
     box-shadow: inset rgb(19 99 19) 2px 0 0;
     background-color: rgb(78, 183, 78);
     border-radius: 50% 0 0 50%;
+    border: solid rgb(21, 153, 27) 3px;
     min-width: 1.3vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
     font-size: calc(.8vw + 10px);
@@ -123,6 +123,18 @@ body {
     box-shadow: inset rgb(99, 19, 19) -2px 0 0;
     background-color: rgb(192, 67, 67);
     border-radius: 0 50% 50% 0;
+    border: solid rgb(153, 21, 21) 3px;
+    min-width: 1.3vw;
+    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
+    font-size: calc(.8vw + 10px);
+}
+
+.score-text-dq {
+    padding: 0 .15em 0 .3em;
+    box-shadow: inset rgb(86, 76, 14) -2px 0 0;
+    background-color: rgb(191, 181, 66);
+    border-radius: 0 50% 50% 0;
+    border: solid rgb(136, 124, 16) 3px;
     min-width: 1.3vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
     font-size: calc(.8vw + 10px);
@@ -130,6 +142,11 @@ body {
 
 .result p {
     font-family: AntiqueOlive;
+}
+
+.long-name {
+    font-size: calc(.3vw + 10px);
+    padding: .35em .4em .35em .2em;
 }
 
 .header-container {

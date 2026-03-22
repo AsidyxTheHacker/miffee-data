@@ -119,34 +119,52 @@ async function getRecentSets() {
         let score1 = p1.stats.score.value;
         let score2 = p2.stats.score.value;
 
-        if (name1.length >= 8) {
-            console.log('YAY')
-        } else  if (name2.length >= 8) {
-            console.log("YAY2")
-        } else {
-            console.log("NAY")
-        }
+        let isName1Long = name1.length >= 8;
+        let isName2Long = name2.length >= 8;
 
         if (score1 === -1) {
             playerWin.innerText = name2;
             scoreWin.innerText = "W";
             playerLose.innerText = name1;
             scoreLose.innerText = "DQ";
+
+            // name classes
+            if (isName2Long) playerWin.classList.add('long-name');
+            if (isName1Long) playerLose.classList.add('long-name');
+
+            // DQ class
+            scoreLose.classList.add('long-name', 'score-text-dq');
+
         } else if (score2 === -1) {
             playerWin.innerText = name1;
             scoreWin.innerText = "W";
             playerLose.innerText = name2;
             scoreLose.innerText = "DQ";
+
+            // name classes
+            if (isName1Long) playerWin.classList.add('long-name');
+            if (isName2Long) playerLose.classList.add('long-name');
+
+            // DQ class
+            scoreLose.classList.add('long-name', 'score-text-dq');
+
         } else if (score1 > score2) {
             playerWin.innerText = name1;
             scoreWin.innerText = score1;
             playerLose.innerText = name2;
             scoreLose.innerText = score2;
+
+            if (isName1Long) playerWin.classList.add('long-name');
+            if (isName2Long) playerLose.classList.add('long-name');
+
         } else {
             playerWin.innerText = name2;
             scoreWin.innerText = score2;
             playerLose.innerText = name1;
             scoreLose.innerText = score1;
+
+            if (isName2Long) playerWin.classList.add('long-name');
+            if (isName1Long) playerLose.classList.add('long-name');
         };
 
         winContainer.append(playerWin, scoreWin);
