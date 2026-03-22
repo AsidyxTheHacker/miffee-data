@@ -23,7 +23,7 @@ async function getEventId() {
 
     const data = await res.json();
     eventId = data.data.event.id;
-}
+};
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
 
@@ -57,7 +57,30 @@ async function getRecentSets() {
             Authorization: 'Bearer ' + startggKey
         },
         body: JSON.stringify({
-            query: "query getTournamentData( $tourneySlug: String! $eventId: EventFilter! $page: Int! ) { tournament(slug: $tourneySlug) { events(filter: $eventId) { sets(page: $page, perPage: 5, sortType: RECENT, filters: {showByes: false, hideEmpty: true}) { nodes { slots { standing { entrant { participants { gamerTag } } stats { score { value } } } } } } } } }",
+            query: `query getTournamentData($tourneySlug: String!, $eventId: EventFilter!, $page: Int!) {
+                tournament(slug: $tourneySlug) {
+                    events(filter: $eventId) {
+                        sets(page: $page, perPage: 5, sortType: RECENT, filters: {showByes: false, hideEmpty: true}) {
+                            nodes {
+                                slots {
+                                    standing {
+                                        entrant {
+                                            participants {
+                                                gamerTag
+                                            }
+                                        }
+                                        stats {
+                                            score {
+                                                value
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }`,
             variables: {
                 tourneySlug: tournamentSlug,
                 eventId: { id: eventId },
@@ -72,7 +95,6 @@ async function getRecentSets() {
     for (let i = 0; i < recentSets.length; i++) {
         let result = document.createElement('div');
         result.classList.add('result');
-
         result.style.animationDelay = `${i * 0.2}s`;
 
         let winContainer = document.createElement('div');
@@ -97,24 +119,22 @@ async function getRecentSets() {
         let score1 = p1.stats.score.value;
         let score2 = p2.stats.score.value;
 
-        if (score1 > score2) {
-            if (score1 === -1) {
-                score1 = "DQ";
-            } else if (score2 === -1) {
-                score2 = "DQ";
-            }
+        if (score1 === -1) {
+            playerWin.innerText = name2;
+            scoreWin.innerText = "W";
+            playerLose.innerText = name1;
+            scoreLose.innerText = "DQ";
+        } else if (score2 === -1) {
+            playerWin.innerText = name1;
+            scoreWin.innerText = "W";
+            playerLose.innerText = name2;
+            scoreLose.innerText = "DQ";
+        } else if (score1 > score2) {
             playerWin.innerText = name1;
             scoreWin.innerText = score1;
             playerLose.innerText = name2;
             scoreLose.innerText = score2;
         } else {
-            if (score1 === -1) {
-                score1 = "DQ";
-                score2 = "W";
-            } else if (score2 === -1) {
-                score2 = "DQ";
-                score1 = "W";
-            };
             playerWin.innerText = name2;
             scoreWin.innerText = score2;
             playerLose.innerText = name1;
