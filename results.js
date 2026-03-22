@@ -27,7 +27,6 @@ async function getEventId() {
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
 
-    // Fade OUT only the results container
     resultContainer.classList.remove('fade-in');
     void resultContainer.offsetHeight;
     resultContainer.classList.add('fade-out');
@@ -36,7 +35,6 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
         resultContainer.addEventListener('animationend', resolve, { once: true });
     });
 
-    // Clear only the previous results
     resultContainer.innerHTML = '';
 
     tournamentSlug = document.getElementById('tournamentInput').value;
@@ -45,7 +43,6 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     await getEventId();
     await getRecentSets();
 
-    // Fade IN results
     resultContainer.classList.remove('fade-out');
     void resultContainer.offsetHeight;
     resultContainer.classList.add('fade-in');
@@ -76,7 +73,6 @@ async function getRecentSets() {
         let result = document.createElement('div');
         result.classList.add('result');
 
-        // Calculate staggered animation delay
         result.style.animationDelay = `${i * 0.2}s`;
 
         let winContainer = document.createElement('div');
@@ -114,19 +110,21 @@ async function getRecentSets() {
         } else {
             if (score1 === -1) {
                 score1 = "DQ";
+                score2 = "W";
             } else if (score2 === -1) {
                 score2 = "DQ";
-            }
+                score1 = "W";
+            };
             playerWin.innerText = name2;
             scoreWin.innerText = score2;
             playerLose.innerText = name1;
             scoreLose.innerText = score1;
-        }
+        };
 
         winContainer.append(playerWin, scoreWin);
         loseContainer.append(playerLose, scoreLose);
         result.append(winContainer, loseContainer);
 
         resultContainer.appendChild(result);
-    }
+    };
 };
