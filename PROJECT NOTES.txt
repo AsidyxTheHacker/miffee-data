@@ -1,0 +1,6 @@
+- Recent Results
+ * auto refresher
+ * green name W, red name L
+ * Placing/Winners or Losers side
+ * Fade in/out smoothly
+ * Text bounding box so name isnt multiple lines

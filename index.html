@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="./imgs/miffee_pic.png">
+    <script src="script.js" defer></script>
+    <title>Hi Miffee!</title>
+</head>
+
+<body>
+    <div class="popup-container hidden">
+        <div class="empty-popup">
+            <p>Please don't submit an empty string.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header-container">
+            <h1 class="title">Hi Miffee.</h1>
+            <a href="./results.html"><button id="resultsBtn">Results</button></a>
+        </div>
+        <div class="input-container">
+            <form action="">
+                <select name="names" id="name-select">
+
+                </select>
+                <label for="name-select">^ Picture Unavailable ^</label>
+            </form>
+            <input id="searchInput" type="text" placeholder="Enter Tourney Slug...">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div id="name-container">
+
+        </div>
+        <div id="no-name-container">
+
+        </div>
+    </div>
+</body>
+
+</html>

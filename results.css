@@ -1,0 +1,243 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    width: 100vw;
+    background-image: url(./imgs/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+}
+
+.results-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 2em;
+    transition: .2s ease-in-out;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#finalResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: auto;
+    width: 650px;
+}
+
+.result-title {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+    background-color: black;
+    border: solid white 2px;
+    font-family: AntiqueOlive;
+}
+
+#finalResults.fade-in {
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+#finalResults.fade-out {
+    animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: auto;
+    border: solid white 2px;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeItemIn 0.5s forwards;
+}
+
+.win-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    border-right: solid white 2px;
+}
+
+.lose-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    border-left: solid white 2px;
+}
+
+.player-text-win {
+    margin-right: .3em;
+    font-size: calc(.6vw + 10px);
+    text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
+}
+
+.player-text-lose {
+    margin-left: .3em;
+    font-size: calc(.6vw + 10px);
+    text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
+}
+
+.score-text-win {
+    padding: 0 .15em 0 .3em;
+    box-shadow: inset rgb(19 99 19) 2px 0 0;
+    background-color: rgb(78, 183, 78);
+    border-radius: 50% 0 0 50%;
+    min-width: 1.3vw;
+    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
+    font-size: calc(.8vw + 10px);
+}
+
+.score-text-lose {
+    padding: 0 .3em 0 .15em;
+    box-shadow: inset rgb(99, 19, 19) -2px 0 0;
+    background-color: rgb(192, 67, 67);
+    border-radius: 0 50% 50% 0;
+    min-width: 1.3vw;
+    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
+    font-size: calc(.8vw + 10px);
+}
+
+.result p {
+    font-family: AntiqueOlive;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-top: .5em;
+}
+
+.title {
+    text-decoration: underline;
+    font-size: calc(2vw + 32px);
+    cursor: default;
+    color: white;
+    letter-spacing: 2px;
+    transition: .2s ease-in-out;
+}
+
+.title:hover {
+    color: #2db5ff;
+    text-shadow: #45c1ffda 0 0 4px;
+    letter-spacing: 2.5px;
+}
+
+#searchBtn,
+#pictureBtn {
+    font-size: calc(1em + 8px);
+    background-color: #c2e5fb;
+    border-radius: 100px;
+    box-shadow: rgba(44, 146, 187, 0.35) 0 -25px 18px -14px inset,
+        rgba(44, 132, 187, 0.15) 0 1px 2px,
+        rgba(44, 146, 187, 0.35) 0 2px 4px,
+        rgba(44, 130, 187, 0.15) 0 4px 8px,
+        rgba(44, 130, 187, 0.15) 0 8px 16px,
+        rgba(44, 137, 187, 0.15) 0 16px 32px;
+    color: #1a96c7;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-weight: bold;
+}
+
+#searchBtn:hover,
+#pictureBtn:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+select {
+    width: 100%;
+}
+
+select:focus {
+    outline: none;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+#searchInput,
+input {
+    border-radius: 20px;
+    font-size: calc(1em + 8px);
+    padding: calc(.05vw + 8px) calc(.3vw + 8px);
+    border: #f35aac00 solid 3px;
+    background: #a3d8ef;
+}
+
+input:focus {
+    outline: none;
+}
+
+@font-face {
+    font-family: AntiqueOlive;
+    src: url('./Antique\ Olive\ Black\ Regular.ttf');
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeItemIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
