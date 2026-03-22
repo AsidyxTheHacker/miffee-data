@@ -9,7 +9,8 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     width: 100vw;
-    background-image: url(./imgs/background.png);
+    /* background-image: url(./imgs/background.png); */
+    background-color: rgb(28, 14, 19);
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;

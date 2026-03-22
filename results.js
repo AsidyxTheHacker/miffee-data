@@ -119,6 +119,14 @@ async function getRecentSets() {
         let score1 = p1.stats.score.value;
         let score2 = p2.stats.score.value;
 
+        if (name1.length >= 8) {
+            console.log('YAY')
+        } else  if (name2.length >= 8) {
+            console.log("YAY2")
+        } else {
+            console.log("NAY")
+        }
+
         if (score1 === -1) {
             playerWin.innerText = name2;
             scoreWin.innerText = "W";
