@@ -113,9 +113,9 @@ body {
     background-color: rgb(78, 183, 78);
     border-radius: 50% 0 0 50%;
     border: solid rgb(21, 153, 27) 3px;
-    min-width: 1.3vw;
+    min-width: 1.4vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.8vw + 10px);
+    font-size: calc(.7vw + 10px);
 }
 
 .score-text-lose {
@@ -124,9 +124,9 @@ body {
     background-color: rgb(192, 67, 67);
     border-radius: 0 50% 50% 0;
     border: solid rgb(153, 21, 21) 3px;
-    min-width: 1.3vw;
+    min-width: 1.4vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.8vw + 10px);
+    font-size: calc(.7vw + 10px);
 }
 
 .score-text-dq {
@@ -137,7 +137,7 @@ body {
     border: solid rgb(136, 124, 16) 3px;
     min-width: 1.3vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.8vw + 10px);
+    font-size: calc(.7vw + 10px);
 }
 
 .result p {
@@ -147,6 +147,16 @@ body {
 .long-name {
     font-size: calc(.3vw + 10px);
     padding: .35em .4em .35em .2em;
+}
+
+.dq-score-lose {
+    font-size: calc(.3vw + 10px);
+    padding: .3em .55em .3em .2em;
+}
+
+.dq-score-win {
+    font-size: calc(.3vw + 10px);
+    padding: .3em .2em .3em .4em;
 }
 
 .header-container {

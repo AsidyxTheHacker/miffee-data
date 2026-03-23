@@ -128,12 +128,11 @@ async function getRecentSets() {
             playerLose.innerText = name1;
             scoreLose.innerText = "DQ";
 
-            // name classes
             if (isName2Long) playerWin.classList.add('long-name');
             if (isName1Long) playerLose.classList.add('long-name');
 
-            // DQ class
-            scoreLose.classList.add('long-name', 'score-text-dq');
+            scoreWin.classList.add('dq-score-win');
+            scoreLose.classList.add('dq-score-lose', 'score-text-dq');
 
         } else if (score2 === -1) {
             playerWin.innerText = name1;
@@ -141,12 +140,11 @@ async function getRecentSets() {
             playerLose.innerText = name2;
             scoreLose.innerText = "DQ";
 
-            // name classes
             if (isName1Long) playerWin.classList.add('long-name');
             if (isName2Long) playerLose.classList.add('long-name');
 
-            // DQ class
-            scoreLose.classList.add('long-name', 'score-text-dq');
+            scoreWin.classList.add('dq-score-win');
+            scoreLose.classList.add('dq-score-lose', 'score-text-dq');
 
         } else if (score1 > score2) {
             playerWin.innerText = name1;
