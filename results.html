@@ -19,9 +19,12 @@
         <div class="input-container">
             <input id="tournamentInput" type="text" placeholder="Enter Tourney Slug...">
             <input id="eventInput" type="text" placeholder="Enter Event Slug...">
-            <button id="searchBtn">Search</button>
+            <button id="searchBtn" disabled>Search</button>
         </div>
         <div class="results-wrapper">
+            <div id="refreshContainer">
+                <p id="refreshStatus">Refresh In: <span id="refreshTimer">0:00</span></p>
+            </div>
             <p class="result-title">Recent Results</p>
             <div id="finalResults"></div>
         </div>

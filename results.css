@@ -112,10 +112,10 @@ body {
     box-shadow: inset rgb(19 99 19) 2px 0 0;
     background-color: rgb(78, 183, 78);
     border-radius: 50% 0 0 50%;
-    border: solid rgb(21, 153, 27) 3px;
+    border: solid rgb(21, 153, 27) 2px;
     min-width: 1.4vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.7vw + 10px);
+    font-size: calc(.6vw + 10px);
 }
 
 .score-text-lose {
@@ -123,21 +123,20 @@ body {
     box-shadow: inset rgb(99, 19, 19) -2px 0 0;
     background-color: rgb(192, 67, 67);
     border-radius: 0 50% 50% 0;
-    border: solid rgb(153, 21, 21) 3px;
+    border: solid rgb(153, 21, 21) 2px;
     min-width: 1.4vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.7vw + 10px);
+    font-size: calc(.6vw + 10px);
 }
 
 .score-text-dq {
-    padding: 0 .15em 0 .3em;
     box-shadow: inset rgb(86, 76, 14) -2px 0 0;
     background-color: rgb(191, 181, 66);
     border-radius: 0 50% 50% 0;
-    border: solid rgb(136, 124, 16) 3px;
+    border: solid rgb(136, 124, 16) 2px;
     min-width: 1.3vw;
     text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.7vw + 10px);
+    font-size: calc(.6vw + 10px);
 }
 
 .result p {
@@ -151,7 +150,7 @@ body {
 
 .dq-score-lose {
     font-size: calc(.3vw + 10px);
-    padding: .3em .55em .3em .2em;
+    padding: .3em .55em .3em .1em;
 }
 
 .dq-score-win {
@@ -251,6 +250,15 @@ input:focus {
     border: #2dabff solid 3px;
 }
 
+#refreshContainer {
+    color: white;
+    font-weight: bold;
+}
+
+.fadeOut {
+    animation: fadeOut .4s forwards;
+}
+
 @font-face {
     font-family: AntiqueOlive;
     src: url('./Antique\ Olive\ Black\ Regular.ttf');
@@ -269,10 +277,12 @@ input:focus {
 @keyframes fadeOut {
     0% {
         opacity: 1;
+        transform: translateY(0px);
     }
 
     100% {
         opacity: 0;
+        transform: translateY(0);
     }
 }
 
