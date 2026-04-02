@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     width: 100vw;
     /* background-image: url(./imgs/background.png); */
-    background-color: rgb(14, 20, 28);
+    background-color: rgb(11, 16, 22);
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
@@ -45,17 +45,6 @@ body {
     width: 500px;
 }
 
-.result-title {
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-    width: 100%;
-    background-color: black;
-    text-decoration: underline;
-    font-family: AntiqueOlive;
-    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54);
-}
-
 #finalResults.fade-in {
     animation: fadeIn 0.4s ease-in-out forwards;
 }
@@ -79,6 +68,17 @@ body {
     animation: fadeItemIn 0.5s forwards;
 }
 
+.result-title {
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    width: 100%;
+    background-color: black;
+    font-family: AntiqueOlive;
+    text-shadow: rgb(107, 107, 107) 0 3px 0, rgba(23, 23, 23, 0.743) -2px 4px 0, rgba(23, 23, 23, 0.743) 2px -1px 0, rgba(23, 23, 23, 0.743) -2px -1px 0, rgba(23, 23, 23, 0.743) 2px 4px 0;
+    padding-bottom: .1em;
+}
+
 .win-container {
     display: flex;
     align-items: center;
@@ -97,47 +97,49 @@ body {
 }
 
 .player-text-win {
-    margin-right: .3em;
-    font-size: calc(.6vw + 10px);
-    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54), 4px 4px 0 rgb(35, 35, 35);
+    margin-right: .4em;
+    font-size: calc(.6vw + 12px);
+    text-shadow: rgb(107, 107, 107) 0 3px 0, rgba(23, 23, 23, 0.743) -2px 4px 0, rgba(23, 23, 23, 0.743) 2px -1px 0, rgba(23, 23, 23, 0.743) -2px -1px 0, rgba(23, 23, 23, 0.743) 2px 4px 0;
+    -webkit-text-stroke: rgb(22, 22, 22) .3px;
 }
 
 .player-text-lose {
-    margin-left: .3em;
-    font-size: calc(.6vw + 10px);
-    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54), 4px 4px 0 rgb(35, 35, 35);
+    margin-left: .4em;
+    font-size: calc(.6vw + 12px);
+    text-shadow: rgb(107, 107, 107) 0 3px 0, rgba(23, 23, 23, 0.743) -2px 4px 0, rgba(23, 23, 23, 0.743) 2px -1px 0, rgba(23, 23, 23, 0.743) -2px -1px 0, rgba(23, 23, 23, 0.743) 2px 4px 0;
+    -webkit-text-stroke: rgb(22, 22, 22) .3px;
 }
 
 .score-text-win {
     padding: 0 .15em 0 .3em;
-    box-shadow: inset rgb(19 99 19) 2px 0 0;
+    box-shadow: inset rgb(19 99 19) 2px 0 0, rgb(19 99 19) -2px 0 0;
     background-color: rgb(78, 183, 78);
-    border-radius: 50% 0 0 50%;
+    border-radius: 45% 0 0 45%;
     border: solid rgb(21, 153, 27) 2px;
     min-width: 1.4vw;
-    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.6vw + 10px);
+    text-shadow: rgba(0, 0, 0, 0.532) 2px 2px 0;
+    font-size: calc(.6vw + 12px);
 }
 
 .score-text-lose {
     padding: 0 .3em 0 .15em;
-    box-shadow: inset rgb(99, 19, 19) -2px 0 0;
+    box-shadow: inset rgb(99, 19, 19) 2px 0 0, rgb(99, 19, 19) 2px 0 0;
     background-color: rgb(192, 67, 67);
-    border-radius: 0 50% 50% 0;
+    border-radius: 0 45% 45% 0;
     border: solid rgb(153, 21, 21) 2px;
     min-width: 1.4vw;
-    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.6vw + 10px);
+    text-shadow: rgba(0, 0, 0, 0.532) 2px 2px 0;
+    font-size: calc(.6vw + 12px);
 }
 
 .score-text-dq {
-    box-shadow: inset rgb(86, 76, 14) -2px 0 0;
+    box-shadow: inset rgb(86, 76, 14) 2px 0 0, rgb(86, 76, 14) 2px 0 0;
     background-color: rgb(191, 181, 66);
-    border-radius: 0 50% 50% 0;
+    border-radius: 0 45% 45% 0;
     border: solid rgb(136, 124, 16) 2px;
-    min-width: 1.3vw;
-    text-shadow: rgba(0, 0, 0, 0.373) 2px 2px 0;
-    font-size: calc(.6vw + 10px);
+    min-width: 1.2vw;
+    text-shadow: rgba(0, 0, 0, 0.532) 2px 2px 0;
+    font-size: calc(.6vw + 12px);
 }
 
 .result p {
@@ -151,7 +153,7 @@ body {
 
 .dq-score-lose {
     font-size: calc(.3vw + 10px);
-    padding: .3em .55em .3em .1em;
+    padding: .3em .35em .3em .3em;
 }
 
 .dq-score-win {
