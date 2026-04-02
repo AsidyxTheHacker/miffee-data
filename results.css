@@ -48,11 +48,12 @@ body {
 .result-title {
     color: white;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     width: 100%;
     background-color: black;
     text-decoration: underline;
     font-family: AntiqueOlive;
+    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54);
 }
 
 #finalResults.fade-in {
@@ -97,14 +98,14 @@ body {
 
 .player-text-win {
     margin-right: .3em;
-    font-size: calc(.5vw + 10px);
-    text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
+    font-size: calc(.6vw + 10px);
+    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54), 4px 4px 0 rgb(35, 35, 35);
 }
 
 .player-text-lose {
     margin-left: .3em;
-    font-size: calc(.5vw + 10px);
-    text-shadow: rgba(176, 176, 176, 0.373) 2px 2px 0;
+    font-size: calc(.6vw + 10px);
+    text-shadow: rgb(54, 54, 54) 2px 2px 0, -2px -2px 0 rgb(54, 54, 54), -2px 2px 0 rgb(54, 54, 54), 2px -2px 0 rgb(54, 54, 54), 4px 4px 0 rgb(35, 35, 35);
 }
 
 .score-text-win {
@@ -144,7 +145,7 @@ body {
 }
 
 .long-name {
-    font-size: calc(.3vw + 10px);
+    font-size: calc(.35vw + 10px);
     padding: .35em .4em .35em .2em;
 }
 
