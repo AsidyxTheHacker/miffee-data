@@ -12,8 +12,8 @@ let refreshInterval = null;
 let countdownInterval = null;
 let isFetching = false;
 
-const REFRESH_TIME = 300000; // 5 minutes
-const FADE_DURATION = 400;   // match CSS (0.4s)
+const REFRESH_TIME = 300000;
+const FADE_DURATION = 400;
 
 let nextRefreshTime = null;
 
@@ -33,7 +33,8 @@ function startCountdown() {
         let minutes = Math.floor(timeLeft / 60000);
         let seconds = Math.floor((timeLeft % 60000) / 1000);
 
-        refreshTimerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        refreshTimerEl.textContent =
+            `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }, 1000);
 }
 
@@ -65,19 +66,16 @@ async function getRecentSets() {
 
     const children = Array.from(resultContainer.children);
 
-    // ------------------ FADE OUT OLD RESULTS ------------------
+    // ------------------ FADE OUT TEXT ONLY ------------------
     if (children.length > 0) {
-        children.forEach((child, i) => {
-            child.style.opacity = .1;
-            child.style.animation = `fadeOut ${FADE_DURATION}ms ease`;
+        children.forEach(child => {
+            const texts = child.querySelectorAll('p');
+            texts.forEach(el => {
+                el.style.animation = `fadeOut ${FADE_DURATION}ms ease forwards`;
+            });
         });
 
-        // Wait for all fade-out animations
-        await Promise.all(children.map(child =>
-            new Promise(resolve => child.addEventListener('animationend', resolve, { once: true }))
-        ));
-
-        resultContainer.innerHTML = ''; // remove all after fade-out
+        await new Promise(resolve => setTimeout(resolve, FADE_DURATION));
     }
 
     try {
@@ -97,14 +95,10 @@ async function getRecentSets() {
                                     slots {
                                         standing {
                                             entrant {
-                                                participants {
-                                                    gamerTag
-                                                }
+                                                participants { gamerTag }
                                             }
                                             stats {
-                                                score {
-                                                    value
-                                                }
+                                                score { value }
                                             }
                                         }
                                     }
@@ -124,27 +118,49 @@ async function getRecentSets() {
         const data = await res.json();
         let recentSets = data.data.tournament.events[0].sets.nodes;
 
-        // ------------------ APPEND NEW RESULTS WITH FADE-IN ------------------
+        // ------------------ UPDATE / CREATE RESULTS ------------------
         recentSets.forEach((set, i) => {
-            let result = document.createElement('div');
-            result.classList.add('result');
-            result.style.opacity = 0;
-            result.style.animation = `fadeItemIn ${FADE_DURATION}ms ease forwards`;
-            result.style.animationDelay = `${i * 0.1}s`; // stagger slightly
+            let result = resultContainer.children[i];
 
-            let winContainer = document.createElement('div');
-            let loseContainer = document.createElement('div');
-            let scoreWin = document.createElement('p');
-            let scoreLose = document.createElement('p');
-            let playerWin = document.createElement('p');
-            let playerLose = document.createElement('p');
+            if (!result) {
+                result = document.createElement('div');
+                result.classList.add('result');
 
-            winContainer.classList.add('win-container');
-            loseContainer.classList.add('lose-container');
-            scoreWin.classList.add('score-text-win');
-            scoreLose.classList.add('score-text-lose');
-            playerWin.classList.add('player-text-win');
-            playerLose.classList.add('player-text-lose');
+                let winContainer = document.createElement('div');
+                let loseContainer = document.createElement('div');
+
+                winContainer.classList.add('win-container');
+                loseContainer.classList.add('lose-container');
+
+                let playerWin = document.createElement('p');
+                let scoreWin = document.createElement('p');
+                let playerLose = document.createElement('p');
+                let scoreLose = document.createElement('p');
+
+                playerWin.classList.add('player-text-win');
+                scoreWin.classList.add('score-text-win');
+                playerLose.classList.add('player-text-lose');
+                scoreLose.classList.add('score-text-lose');
+
+                winContainer.append(playerWin, scoreWin);
+                loseContainer.append(playerLose, scoreLose);
+                result.append(winContainer, loseContainer);
+                resultContainer.appendChild(result);
+            }
+
+            const winContainer = result.children[0];
+            const loseContainer = result.children[1];
+
+            const playerWin = winContainer.children[0];
+            const scoreWin = winContainer.children[1];
+            const playerLose = loseContainer.children[0];
+            const scoreLose = loseContainer.children[1];
+
+            // 🔥 CLEAR OLD CLASSES (important!)
+            playerWin.classList.remove('long-name');
+            playerLose.classList.remove('long-name');
+            scoreWin.classList.remove('dq-score-win');
+            scoreLose.classList.remove('dq-score-lose', 'score-text-dq');
 
             let p1 = set.slots[0].standing;
             let p2 = set.slots[1].standing;
@@ -162,39 +178,51 @@ async function getRecentSets() {
                 scoreWin.innerText = "W";
                 playerLose.innerText = name1;
                 scoreLose.innerText = "DQ";
+
                 if (isName2Long) playerWin.classList.add('long-name');
                 if (isName1Long) playerLose.classList.add('long-name');
+
                 scoreWin.classList.add('dq-score-win');
                 scoreLose.classList.add('dq-score-lose', 'score-text-dq');
+
             } else if (score2 === -1) {
                 playerWin.innerText = name1;
                 scoreWin.innerText = "W";
                 playerLose.innerText = name2;
                 scoreLose.innerText = "DQ";
+
                 if (isName1Long) playerWin.classList.add('long-name');
                 if (isName2Long) playerLose.classList.add('long-name');
+
                 scoreWin.classList.add('dq-score-win');
                 scoreLose.classList.add('dq-score-lose', 'score-text-dq');
+
             } else if (score1 > score2) {
                 playerWin.innerText = name1;
                 scoreWin.innerText = score1;
                 playerLose.innerText = name2;
                 scoreLose.innerText = score2;
+
                 if (isName1Long) playerWin.classList.add('long-name');
                 if (isName2Long) playerLose.classList.add('long-name');
+
             } else {
                 playerWin.innerText = name2;
                 scoreWin.innerText = score2;
                 playerLose.innerText = name1;
                 scoreLose.innerText = score1;
+
                 if (isName2Long) playerWin.classList.add('long-name');
                 if (isName1Long) playerLose.classList.add('long-name');
             }
 
-            winContainer.append(playerWin, scoreWin);
-            loseContainer.append(playerLose, scoreLose);
-            result.append(winContainer, loseContainer);
-            resultContainer.appendChild(result);
+            // ------------------ FADE IN TEXT ------------------
+            [playerWin, scoreWin, playerLose, scoreLose].forEach((el, index) => {
+                el.style.opacity = 0;
+                void el.offsetWidth;
+                el.style.animation = `fadeItemIn ${FADE_DURATION}ms ease forwards`;
+                el.style.animationDelay = `${i * 0.1 + index * 0.05}s`;
+            });
         });
 
     } finally {
@@ -211,7 +239,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     eventSlug = document.getElementById('eventInput').value;
 
     await getEventId();
-    await getRecentSets(); // ✅ handles fade-out + fade-in
+    await getRecentSets();
 
     startCountdown();
 

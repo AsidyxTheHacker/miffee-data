@@ -43,6 +43,8 @@ body {
     justify-content: start;
     height: auto;
     width: 500px;
+    background-color: black;
+    padding-bottom: .6em;
 }
 
 #finalResults.fade-in {
@@ -111,7 +113,7 @@ body {
 }
 
 .score-text-win {
-    padding: 0 .15em 0 .3em;
+    padding: 0 .1em 0 .35em;
     box-shadow: inset rgb(19 99 19) 2px 0 0, rgb(19 99 19) -2px 0 0;
     background-color: rgb(78, 183, 78);
     border-radius: 45% 0 0 45%;
@@ -122,8 +124,8 @@ body {
 }
 
 .score-text-lose {
-    padding: 0 .3em 0 .15em;
-    box-shadow: inset rgb(99, 19, 19) 2px 0 0, rgb(99, 19, 19) 2px 0 0;
+    padding: 0 .35em 0 .1em;
+    box-shadow: inset rgb(99, 19, 19) -2px 0 0, rgb(99, 19, 19) 2px 0 0;
     background-color: rgb(192, 67, 67);
     border-radius: 0 45% 45% 0;
     border: solid rgb(153, 21, 21) 2px;
@@ -133,7 +135,7 @@ body {
 }
 
 .score-text-dq {
-    box-shadow: inset rgb(86, 76, 14) 2px 0 0, rgb(86, 76, 14) 2px 0 0;
+    box-shadow: inset rgb(86, 76, 14) -2px 0 0, rgb(86, 76, 14) 2px 0 0;
     background-color: rgb(191, 181, 66);
     border-radius: 0 45% 45% 0;
     border: solid rgb(136, 124, 16) 2px;
@@ -153,7 +155,7 @@ body {
 
 .dq-score-lose {
     font-size: calc(.3vw + 10px);
-    padding: .3em .35em .3em .3em;
+    padding: .3em .45em .3em .15em;
 }
 
 .dq-score-win {
