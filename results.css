@@ -78,7 +78,7 @@ body {
     background-color: black;
     font-family: AntiqueOlive;
     text-shadow: rgb(107, 107, 107) 0 3px 0, rgba(23, 23, 23, 0.743) -2px 4px 0, rgba(23, 23, 23, 0.743) 2px -1px 0, rgba(23, 23, 23, 0.743) -2px -1px 0, rgba(23, 23, 23, 0.743) 2px 4px 0;
-    padding-bottom: .1em;
+    padding: .3em 0 .1em 0;
 }
 
 .win-container {
